@@ -1,1 +1,1 @@
-# analysis-of-Norum2020-replicaiton-study
+This repository is part of a large replication project conducted by the Sports Science Replication Centre (https://ssreplicationcentre.com/). It includes the data and analyses for the replication study of "Caffeine increases strength and power performance in resistance-trained females during early follicular phase" by Norum et al (2020).
