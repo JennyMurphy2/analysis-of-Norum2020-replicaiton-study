@@ -5,7 +5,7 @@ library(TOSTER)
 library(MOTE)
 library(tidyverse)
 
-# Replication data loading and prep ---------------------
+# Replication data prep ---------------------
 rep_data <- read_csv("replication_data.csv")
 head(rep_data)
 
@@ -139,18 +139,7 @@ orig_hedges
 
 # Replication analyses - z-test --------
 
-# Compare dz
-rep_test <- compare_smd(
-  smd2 = rep_dz$d,
-  n2 = rep_desc$count[1],
-  smd1 = orig_dz$d,
-  n1 = orig_desc$count[1],
-  paired = TRUE,
-  alternative = "greater")
-rep_test
-
-
-# Bootstrap Z-test 
+# Bootstrap z-test to compare effect sizes
 
 boot_test = boot_compare_smd(x1 = orig_data$differences,
                              x2 = rep_data$differences,
