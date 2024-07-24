@@ -5,6 +5,8 @@ library(TOSTER)
 library(MOTE)
 library(tidyverse)
 
+set.seed(21)
+
 # Replication data prep ---------------------
 rep_data <- read_csv("replication_data.csv")
 head(rep_data)
