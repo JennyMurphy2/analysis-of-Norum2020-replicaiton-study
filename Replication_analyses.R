@@ -55,9 +55,12 @@ rep_data %>% shapiro_test(differences)
 
 ## Paired t-test  -----------------------------
 
-replication_ttest <- t.test(max_squat ~ condition, rep_data_long, 
-                  alternative = "two.sided", paired = TRUE, conf.level = 0.95) %>%
-  tidy()
+#replication_ttest <- t.test(max_squat ~ condition, rep_data_long, 
+#                  alternative = "two.sided", paired = TRUE, conf.level = 0.95) %>%
+#  tidy()
+#replication_ttest
+
+replication_ttest <- t.test(rep_data$Caffeine, rep_data$Placebo ,paired = TRUE)
 replication_ttest
 
 ### Replication effect size calculation ------
@@ -120,9 +123,12 @@ orig_data %>% shapiro_test(differences)
 
 ## Paired t-test  -----------------------------
 
-original_ttest <- t.test(max_squat ~ condition, orig_data_long, 
-                            alternative = "two.sided", paired = TRUE, conf.level = 0.95) %>%
-  tidy()
+#original_ttest <- t.test(max_squat ~ condition, orig_data_long, 
+#                            alternative = "two.sided", paired = TRUE, conf.level = 0.95) %>%
+#  tidy()
+#original_ttest
+
+original_ttest <- t.test(orig_data$Caffeine,orig_data$Placebo ,paired = TRUE)
 original_ttest
 
 ### Original effect size calculation ------
@@ -152,3 +158,12 @@ boot_test
 
 # Table of bootstrapped CIs
 knitr::kable(boot_test$df_ci, digits = 4)
+
+rep_test <- compare_smd(
+  smd1 = 0.27,
+  n1 = orig_desc$count[1],
+  smd2 = rep_hedges$d,
+  n2 = rep_desc$count[1],
+  paired = TRUE,
+  alternative = "greater")
+rep_test
