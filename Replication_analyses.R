@@ -68,11 +68,10 @@ replication_ttest
 rep_dz <- d.dep.t.diff.t(t = replication_ttest$statistic, n = rep_desc$count[1], a = 0.05)
 rep_dz
 
-rep_hedges <- g.ind.t(m1 = rep_desc$mean[1], m2 = rep_desc$mean[2], 
+rep_dav <- d.dep.t.avg(m1 = rep_desc$mean[1], m2 = rep_desc$mean[2], 
                        sd1 = rep_desc$sd[1], sd2 = rep_desc$sd[2], 
-                       n1 = 15, n2 = 15, a = 0.05)
-rep_hedges 
-
+                       n = 21, a = 0.05)
+rep_dav
 
 # Original study data ------
 
@@ -128,13 +127,18 @@ orig_data %>% shapiro_test(differences)
 #  tidy()
 #original_ttest
 
-original_ttest <- t.test(orig_data$Caffeine,orig_data$Placebo ,paired = TRUE)
+original_ttest <- t.test(orig_data$Caffeine,orig_data$Placebo, paired = TRUE)
 original_ttest
 
 ### Original effect size calculation ------
 
-orig_dz <- d.dep.t.diff.t(t = original_ttest$statistic, n = orig_desc$count[1], a = 0.05)
-orig_dz
+ori_dz <- d.dep.t.diff.t(t = original_ttest$statistic, n = orig_desc$count[1], a = 0.05)
+ori_dz
+
+ori_dav <- d.dep.t.avg(m1 = orig_desc$mean[1], m2 = orig_desc$mean[2], 
+                       sd1 = orig_desc$sd[1], sd2 = orig_desc$sd[2], 
+                       n = 15, a = 0.05)
+ori_dav
 
 # Note - the original study reported Hedges g for the paired t test effect size
 
